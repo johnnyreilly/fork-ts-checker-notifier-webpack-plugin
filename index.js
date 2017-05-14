@@ -27,7 +27,7 @@ var ForkTsCheckerNotifierWebpackPlugin = module.exports = function (options) {
     this.titlePrefix = this.options.title ? this.options.title + ' - ' : '';
 };
 
-ForkTsCheckerNotifierWebpackPlugin.prototype.buildNotification = function (diagnostics, lints) {
+ForkTsCheckerNotifierWebpackPlugin.prototype.buildNotification = function (normalizedMessages) {
     if (this.isFirstBuild) {
         this.isFirstBuild = false;
 
@@ -37,20 +37,20 @@ ForkTsCheckerNotifierWebpackPlugin.prototype.buildNotification = function (diagn
     }
 
     var notification;
-    if (diagnostics.length) {
+    if (normalizedMessages.length > 0) {
         this.lastBuildSucceeded = false;
 
-        var firstError = diagnostics.find(function (diagnostic) { return diagnostic.isErrorSeverity() });
+        var firstError = normalizedMessages.find(function (diagnostic) { return diagnostic.isErrorSeverity() });
         if (firstError) {
             notification = Object.assign({}, messageTemplates.error, {
                 title: util.format(messageTemplates.error.title, this.titlePrefix, 'Error: ' + firstError.getFile()),
                 message: firstError.getContent()
             });
         } else if (!this.options.excludeWarnings) {
-            var warning = diagnostics[0];
+            var firstWarning = normalizedMessages.find(function (diagnostic) { return diagnostic.isWarningSeverity() });
             notification = Object.assign({}, messageTemplates.warning, {
-                title: util.format(messageTemplates.warning.title, this.titlePrefix, 'Warning: ' + warning.getFile()),
-                message: warning.getContent()
+                title: util.format(messageTemplates.warning.title, this.titlePrefix, 'Warning: ' + firstWarning.getFile()),
+                message: firstWarning.getContent()
             });
         }
     } else if (!this.lastBuildSucceeded || this.options.alwaysNotify) {
@@ -64,7 +64,7 @@ ForkTsCheckerNotifierWebpackPlugin.prototype.buildNotification = function (diagn
 };
 
 ForkTsCheckerNotifierWebpackPlugin.prototype.compilationDone = function (diagnostics, lints) {
-    var notification = this.buildNotification(diagnostics, lints);
+    var notification = this.buildNotification([].concat(diagnostics, lints));
     if (notification) {
         notifier.notify(notification);
     }

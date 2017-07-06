@@ -53,7 +53,7 @@ ForkTsCheckerNotifierWebpackPlugin.prototype.buildNotification = function (norma
                 message: firstWarning.getContent()
             });
         }
-    } else if (!this.lastBuildSucceeded || this.options.alwaysNotify) {
+    } else if (!this.options.skipSuccessful && (!this.lastBuildSucceeded || this.options.alwaysNotify)) {
         this.lastBuildSucceeded = true;
         notification = Object.assign({}, messageTemplates.buildSucceeded, {
             title: util.format(messageTemplates.buildSucceeded.title, this.titlePrefix)

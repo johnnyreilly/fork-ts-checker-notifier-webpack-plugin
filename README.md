@@ -68,3 +68,11 @@ Do not notify on the first build.  This allows you to receive notifications on s
 ```js
 new WebpackNotifierPlugin({skipFirstNotification: true});
 ```
+
+### Skip Notification for successfull builds
+
+Skip notifications for successful builds.
+
+```js
+new WebpackNotifierPlugin({skipSuccessful: true});
+```

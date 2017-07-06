@@ -1,6 +1,6 @@
 {
   "name": "fork-ts-checker-notifier-webpack-plugin",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "a notifier for users of fork-ts-checker-webpack-plugin",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,7 @@
   "keywords": [
     "webpack",
     "fork-ts-checker-webpack-plugin",
+    "ts-loader",
     "notifier"
   ],
   "author": "John Reilly <johnny_reilly@hotmail.com>",

@@ -7,7 +7,6 @@ This is a [webpack](http://webpack.github.io/) plugin that uses the [node-notifi
 The plugin will notify you about the first run (success/fail), all failed runs and the first successful run after recovering from
 a build failure. In other words: it will stay silent if everything is fine with your build.
 
-
 ## Installation
 
 Use `npm` to install this package:

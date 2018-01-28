@@ -71,5 +71,5 @@ ForkTsCheckerNotifierWebpackPlugin.prototype.compilationDone = function (diagnos
 };
 
 ForkTsCheckerNotifierWebpackPlugin.prototype.apply = function (compiler) {
-    compiler.plugin('fork-ts-checker-receive', this.compilationDone.bind(this));
+    compiler.hooks.forkTsCheckerReceive.tap('fork-ts-checker-notifier-webpack-plugin', this.compilationDone.bind(this));
 };

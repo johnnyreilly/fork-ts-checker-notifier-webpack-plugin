@@ -1,8 +1,12 @@
 # Changelog
 
+## v0.3.0
+
+- Added webpack 4 support - thanks @johnnyreilly!
+
 ## v0.2.0
 
-- [Added option to skip successful build notifications](https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/pull/1) - thanks @Igogrek!
+- Added option to skip successful build notifications - thanks @Igogrek!
 
 ## v0.1.4
 

@@ -1,6 +1,6 @@
 {
   "name": "fork-ts-checker-notifier-webpack-plugin",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "description": "a notifier for users of fork-ts-checker-webpack-plugin",
   "main": "index.js",
   "scripts": {
@@ -15,11 +15,11 @@
   "author": "John Reilly <johnny_reilly@hotmail.com>",
   "license": "MIT",
   "repository": {
-    "url": "https://github.com/johnnyreilly/fork-checker-repro.git",
+    "url": "https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin.git",
     "type": "git"
   },
   "bugs": {
-    "url": "https://github.com/johnnyreilly/fork-checker-repro/issues"
+    "url": "https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/issues"
   },
   "dependencies": {
     "node-notifier": "^5.1.2"

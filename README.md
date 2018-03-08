@@ -23,10 +23,11 @@ var ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 var config = module.exports = {
   // ...
-
+  // be aware of plugin order:
   plugins: [
-    new ForkTsCheckerNotifierWebpackPlugin({ excludeWarnings: true }),
     new ForkTsCheckerWebpackPlugin(),
+    new ForkTsCheckerNotifierWebpackPlugin({ excludeWarnings: true }),
+    
   ]
 },
 ```

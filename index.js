@@ -66,7 +66,7 @@ ForkTsCheckerNotifierWebpackPlugin.prototype.buildNotification = function(
       title: util.format('%sType check succeeded', this.titlePrefix),
       message: util.format(
         '%s%s',
-        'Not type errors found.',
+        'No type errors!',
         firstWarning ? ' See warning(s) in console!' : ''
       ),
       icon: path.join(__dirname, 'images/built.png')

@@ -2,24 +2,6 @@ var path = require('path');
 var notifier = require('node-notifier');
 var util = require('util');
 
-var messageTemplates = {
-  buildSucceeded: {
-    title: '%sBuild succeeded',
-    message: 'The build has succeeded.',
-    icon: path.join(__dirname, 'images/built.png')
-  },
-  warning: {
-    title: '%s%s',
-    message: '',
-    icon: path.join(__dirname, 'images/warning.png')
-  },
-  error: {
-    title: '%s%s',
-    message: '',
-    icon: path.join(__dirname, 'images/error.png')
-  }
-};
-
 var ForkTsCheckerNotifierWebpackPlugin = (module.exports = function(options) {
   this.options = options || {};
   this.lastBuildSucceeded = false;
@@ -38,49 +20,58 @@ ForkTsCheckerNotifierWebpackPlugin.prototype.buildNotification = function(
     }
   }
 
-  var notification;
-  if (normalizedMessages.length > 0) {
+  var firstError = normalizedMessages.find(function(diagnostic) {
+    return diagnostic.isErrorSeverity();
+  });
+
+  var firstWarning = normalizedMessages.find(function(diagnostic) {
+    return diagnostic.isWarningSeverity();
+  });
+
+  if (firstError) {
     this.lastBuildSucceeded = false;
 
-    var firstError = normalizedMessages.find(function(diagnostic) {
-      return diagnostic.isErrorSeverity();
-    });
-    if (firstError) {
-      notification = Object.assign({}, messageTemplates.error, {
-        title: util.format(
-          messageTemplates.error.title,
-          this.titlePrefix,
-          'Error: ' + firstError.getFile()
-        ),
-        message: firstError.getContent()
-      });
-    } else if (!this.options.excludeWarnings) {
-      var firstWarning = normalizedMessages.find(function(diagnostic) {
-        return diagnostic.isWarningSeverity();
-      });
-      notification = Object.assign({}, messageTemplates.warning, {
-        title: util.format(
-          messageTemplates.warning.title,
-          this.titlePrefix,
-          'Warning: ' + firstWarning.getFile()
-        ),
-        message: firstWarning.getContent()
-      });
-    }
-  } else if (
+    return {
+      title: util.format(
+        '%s%s',
+        this.titlePrefix,
+        'Error in ' + path.basename(firstError.getFile())
+      ),
+      message: firstError.getContent(),
+      icon: path.join(__dirname, 'images/error.png')
+    };
+  }
+
+  if (firstWarning && !this.options.excludeWarnings) {
+    this.lastBuildSucceeded = false;
+
+    return {
+      title: util.format(
+        '%s%s',
+        this.titlePrefix,
+        'Warning in ' + path.basename(firstWarning.getFile())
+      ),
+      message: firstWarning.getContent(),
+      icon: path.join(__dirname, 'images/warning.png')
+    };
+  }
+
+  if (
     !this.options.skipSuccessful &&
     (!this.lastBuildSucceeded || this.options.alwaysNotify)
   ) {
     this.lastBuildSucceeded = true;
-    notification = Object.assign({}, messageTemplates.buildSucceeded, {
-      title: util.format(
-        messageTemplates.buildSucceeded.title,
-        this.titlePrefix
-      )
-    });
-  }
 
-  return notification;
+    return {
+      title: util.format('%sType check succeeded', this.titlePrefix),
+      message: util.format(
+        '%s%s',
+        'No type errors!',
+        firstWarning ? ' See warning(s) in console!' : ''
+      ),
+      icon: path.join(__dirname, 'images/built.png')
+    };
+  }
 };
 
 ForkTsCheckerNotifierWebpackPlugin.prototype.compilationDone = function(

@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.5.0
+
+- [Fix no notification when build succeed with warnings and excludeWarnings was set to true. Show basename instead of the full path. Updated messages](https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/pull/4) - thanks @deftomat!
+
 ## v0.4.0
 
 - Added webpack 4 support - thanks @johnnyreilly!

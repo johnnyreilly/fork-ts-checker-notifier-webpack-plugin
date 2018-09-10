@@ -4,7 +4,7 @@
   "description": "a notifier for users of fork-ts-checker-webpack-plugin",
   "main": "index.js",
   "scripts": {
-    "build": "tsc --version && tsc .",
+    "build": "tsc --version && tsc",
     "test": "jest"
   },
   "keywords": [
@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@types/node-notifier": "^0.0.28",
-    "jest": "^23.6.0"
+    "jest": "^23.6.0",
+    "typescript": "^3.0.3"
   }
 }

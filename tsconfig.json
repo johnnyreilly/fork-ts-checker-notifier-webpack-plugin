@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "checkJs": true,
+        "module": "commonjs",
+        "noEmit": true,
+        "lib":[
+            "es2015"
+        ]
+    },
+    "files": [
+        "index.js"
+    ]
+}

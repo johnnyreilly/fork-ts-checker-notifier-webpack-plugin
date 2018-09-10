@@ -4,7 +4,8 @@
   "description": "a notifier for users of fork-ts-checker-webpack-plugin",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc --version && tsc .",
+    "test": "jest"
   },
   "keywords": [
     "webpack",
@@ -23,5 +24,9 @@
   },
   "dependencies": {
     "node-notifier": "^5.1.2"
+  },
+  "devDependencies": {
+    "@types/node-notifier": "^0.0.28",
+    "jest": "^23.6.0"
   }
 }

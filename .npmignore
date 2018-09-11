@@ -1,3 +1,4 @@
 .vscode
-*.ts
-*.test.*
+index.ts
+index.test.ts
+index.test.d.ts

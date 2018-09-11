@@ -2,3 +2,5 @@ npm-debug.log
 /.test/
 /.vscode/
 /node_modules
+*.js
+*.d.ts

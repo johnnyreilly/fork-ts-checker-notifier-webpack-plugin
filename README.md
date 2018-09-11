@@ -1,6 +1,7 @@
 # fork-ts-checker-notifier-webpack-plugin
 
 [![npm Version](https://img.shields.io/npm/v/fork-ts-checker-notifier-webpack-plugin.svg)](https://www.npmjs.com/package/fork-ts-checker-notifier-webpack-plugin)
+![build](https://travis-ci.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin.svg?branch=master)
 
 This is a [webpack](http://webpack.github.io/) plugin that uses the [node-notifier](https://github.com/mikaelbr/node-notifier) package to display build status system notifications to the user. It's purpose is to work with the [fork-ts-checker-webpack-plugin](https://github.com/Realytics/fork-ts-checker-webpack-plugin).  This deliberately has a similar API as the excellent [webpack-notifier](https://github.com/Turbo87/webpack-notifier) plugin. If you are not using fork-ts-checker-webpack-plugin and you want system notifications then you probably want webpack-notifier. 
 
@@ -8,6 +9,10 @@ The plugin will notify you about the first run (success/fail), all failed runs a
 a build failure. In other words: it will stay silent if everything is fine with your build.
 
 ## Installation
+
+Use `yarn` to install this package:
+
+    yarn add --dev fork-ts-checker-notifier-webpack-plugin
 
 Use `npm` to install this package:
 

@@ -38,13 +38,8 @@ class ForkTsCheckerNotifierWebpackPlugin {
       }
     }
 
-    var firstError = normalizedMessages.find(function(diagnostic) {
-      return diagnostic.isErrorSeverity();
-    });
-
-    var firstWarning = normalizedMessages.find(function(diagnostic) {
-      return diagnostic.isWarningSeverity();
-    });
+    var firstError = normalizedMessages.find(diagnostic => diagnostic.isErrorSeverity());
+    var firstWarning = normalizedMessages.find(diagnostic => diagnostic.isWarningSeverity());
 
     if (firstError) {
       this.lastBuildSucceeded = false;
@@ -92,7 +87,7 @@ class ForkTsCheckerNotifierWebpackPlugin {
     }
   }
 
-  compilationDone(diagnostics: NormalizedMessage[], lints: NormalizedMessage[]) {
+  compilationDone = (diagnostics: NormalizedMessage[], lints: NormalizedMessage[]) => {
     var notification = this.buildNotification([ ...diagnostics, ...lints]);
     if (notification) {
       notifier.notify(notification);
@@ -104,13 +99,13 @@ class ForkTsCheckerNotifierWebpackPlugin {
       // webpack 4
       compiler.hooks.forkTsCheckerReceive.tap(
         'fork-ts-checker-notifier-webpack-plugin',
-        this.compilationDone.bind(this)
+        this.compilationDone
       );
     } else {
       // webpack 2 / 3
       compiler.plugin(
         'fork-ts-checker-receive',
-        this.compilationDone.bind(this)
+        this.compilationDone
       );
     }
   }

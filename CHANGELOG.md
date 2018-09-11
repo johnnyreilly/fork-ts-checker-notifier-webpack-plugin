@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.6.0
+
+- [Rewrite in TypeScript and add test pack - minimum node version 6.0](https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/pull/6) - thanks @johnnyreilly!
+
 ## v0.5.0
 
 - [Fix no notification when build succeed with warnings and excludeWarnings was set to true. Show basename instead of the full path. Updated messages](https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/pull/4) - thanks @deftomat!

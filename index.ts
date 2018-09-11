@@ -1,16 +1,35 @@
-var path = require('path');
-var notifier = require('node-notifier');
-var util = require('util');
+import * as path from 'path';
+import * as notifier from 'node-notifier';
+import * as util from 'util';
+import { NormalizedMessage } from './types/NormalizedMessage';
+
+interface Options {
+  /** Title prefix shown in the notifications. */
+  title?: string;
+  /** If set to `true`, warnings will not cause a notification. */
+  excludeWarnings?: boolean;
+  /** Trigger a notification every time.  Call it "noisy-mode". */
+  alwaysNotify?: boolean;
+  /** Do not notify on the first build.  This allows you to receive notifications on subsequent incremental builds without being notified on the initial build. */
+  skipFirstNotification?: boolean;
+  /** Skip notifications for successful builds. */
+  skipSuccessful?: boolean;
+}
 
 class ForkTsCheckerNotifierWebpackPlugin {
-  constructor(options) {
+  options: Options;
+  lastBuildSucceeded: boolean;
+  isFirstBuild: boolean;
+  titlePrefix: string;
+
+  constructor(options?: Options) {
     this.options = options || {};
     this.lastBuildSucceeded = false;
     this.isFirstBuild = true;
     this.titlePrefix = this.options.title ? this.options.title + ' - ' : '';
   }
 
-  buildNotification(normalizedMessages) {
+  buildNotification(normalizedMessages: NormalizedMessage[]) {
     if (this.isFirstBuild) {
       this.isFirstBuild = false;
 
@@ -73,14 +92,14 @@ class ForkTsCheckerNotifierWebpackPlugin {
     }
   }
 
-  compilationDone(diagnostics, lints) {
-    var notification = this.buildNotification([].concat(diagnostics, lints));
+  compilationDone(diagnostics: NormalizedMessage[], lints: NormalizedMessage[]) {
+    var notification = this.buildNotification([ ...diagnostics, ...lints]);
     if (notification) {
       notifier.notify(notification);
     }
   }
 
-  apply(compiler) {
+  apply(compiler: any) {
     if ('hooks' in compiler) {
       // webpack 4
       compiler.hooks.forkTsCheckerReceive.tap(
@@ -97,4 +116,4 @@ class ForkTsCheckerNotifierWebpackPlugin {
   }
 }
 
-module.exports = ForkTsCheckerNotifierWebpackPlugin;
+export = ForkTsCheckerNotifierWebpackPlugin;

@@ -10,6 +10,10 @@ a build failure. In other words: it will stay silent if everything is fine with 
 
 ## Installation
 
+Use `yarn` to install this package:
+
+    yarn add --dev fork-ts-checker-notifier-webpack-plugin
+
 Use `npm` to install this package:
 
     npm install --save-dev fork-ts-checker-notifier-webpack-plugin

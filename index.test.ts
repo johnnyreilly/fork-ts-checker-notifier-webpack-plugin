@@ -1,4 +1,4 @@
-const ForkTsCheckerNotifierWebpackPlugin = require('./index');
+import ForkTsCheckerNotifierWebpackPlugin = require('./index');
 
 test('first notification is skipped', () => {
   const plugin = new ForkTsCheckerNotifierWebpackPlugin({ skipFirstNotification: true });

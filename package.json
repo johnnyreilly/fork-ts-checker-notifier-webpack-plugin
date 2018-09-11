@@ -3,6 +3,7 @@
   "version": "0.5.0",
   "description": "a notifier for users of fork-ts-checker-webpack-plugin",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "build": "tsc --version && tsc",
     "test": "jest"
@@ -26,8 +27,25 @@
     "node-notifier": "^5.1.2"
   },
   "devDependencies": {
+    "@types/jest": "^23.3.2",
     "@types/node-notifier": "^0.0.28",
+    "fork-ts-checker-webpack-plugin": "^0.4.9",
     "jest": "^23.6.0",
+    "ts-jest": "^23.1.4",
     "typescript": "^3.0.3"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }

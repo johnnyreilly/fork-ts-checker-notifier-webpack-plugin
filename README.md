@@ -1,7 +1,7 @@
 # fork-ts-checker-notifier-webpack-plugin
 
 [![npm Version](https://img.shields.io/npm/v/fork-ts-checker-notifier-webpack-plugin.svg)](https://www.npmjs.com/package/fork-ts-checker-notifier-webpack-plugin)
-![build](https://travis-ci.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin.svg?branch=master)
+[![build](https://travis-ci.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin.svg?branch=master)](https://travis-ci.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/)
 
 This is a [webpack](http://webpack.github.io/) plugin that uses the [node-notifier](https://github.com/mikaelbr/node-notifier) package to display build status system notifications to the user. It's purpose is to work with the [fork-ts-checker-webpack-plugin](https://github.com/Realytics/fork-ts-checker-webpack-plugin).  This deliberately has a similar API as the excellent [webpack-notifier](https://github.com/Turbo87/webpack-notifier) plugin. If you are not using fork-ts-checker-webpack-plugin and you want system notifications then you probably want webpack-notifier. 
 

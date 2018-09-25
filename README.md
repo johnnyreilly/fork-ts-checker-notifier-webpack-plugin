@@ -10,13 +10,13 @@ a build failure. In other words: it will stay silent if everything is fine with 
 
 ## Installation
 
-Use `yarn` to install this package:
+Use `yarn` to install packages:
 
-    yarn add --dev fork-ts-checker-notifier-webpack-plugin
+    yarn add --dev fork-ts-checker-notifier-webpack-plugin fork-ts-checker-notifier-webpack-plugin
 
-Use `npm` to install this package:
+Alternatively, use `npm`:
 
-    npm install --save-dev fork-ts-checker-notifier-webpack-plugin
+    npm install --save-dev fork-ts-checker-notifier-webpack-plugin fork-ts-checker-notifier-webpack-plugin
 
 ## Usage
 
@@ -27,12 +27,14 @@ var ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpa
 var ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 var config = module.exports = {
-  // ...
-  // be aware of plugin order:
+  /**
+   * Plugin order is important.
+   * A wrong order will cause some hooks to be undefined
+   * and the build to fail
+   */
   plugins: [
     new ForkTsCheckerWebpackPlugin(),
     new ForkTsCheckerNotifierWebpackPlugin({ excludeWarnings: true }),
-    
   ]
 },
 ```
@@ -45,7 +47,7 @@ var config = module.exports = {
 Title prefix shown in the notifications.
 
 ```js
-new ForkTsCheckerNotifierWebpackPlugin({title: 'Webpack'});
+new ForkTsCheckerNotifierWebpackPlugin({ title: 'Webpack' });
 ```
 
 ### Exclude Warnings
@@ -53,7 +55,7 @@ new ForkTsCheckerNotifierWebpackPlugin({title: 'Webpack'});
 If set to `true`, warnings will not cause a notification.
 
 ```js
-new ForkTsCheckerNotifierWebpackPlugin({excludeWarnings: true});
+new ForkTsCheckerNotifierWebpackPlugin({ excludeWarnings: true });
 ```
 
 ### Always Notify
@@ -61,7 +63,7 @@ new ForkTsCheckerNotifierWebpackPlugin({excludeWarnings: true});
 Trigger a notification every time.  Call it "noisy-mode".
 
 ```js
-new ForkTsCheckerNotifierWebpackPlugin({alwaysNotify: true});
+new ForkTsCheckerNotifierWebpackPlugin({ alwaysNotify: true });
 ```
 
 ### Skip Notification on the First Build
@@ -69,7 +71,7 @@ new ForkTsCheckerNotifierWebpackPlugin({alwaysNotify: true});
 Do not notify on the first build.  This allows you to receive notifications on subsequent incremental builds without being notified on the initial build.
 
 ```js
-new ForkTsCheckerNotifierWebpackPlugin({skipFirstNotification: true});
+new ForkTsCheckerNotifierWebpackPlugin({ skipFirstNotification: true });
 ```
 
 ### Skip Notification for successfull builds
@@ -77,5 +79,5 @@ new ForkTsCheckerNotifierWebpackPlugin({skipFirstNotification: true});
 Skip notifications for successful builds.
 
 ```js
-new ForkTsCheckerNotifierWebpackPlugin({skipSuccessful: true});
+new ForkTsCheckerNotifierWebpackPlugin({ skipSuccessful: true });
 ```

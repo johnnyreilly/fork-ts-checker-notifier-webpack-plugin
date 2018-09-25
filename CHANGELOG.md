@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.6.1
+
+ - Updated README and added try/catch for forkTsCheckerReceive - thanks @Rolandisimo!
+
 ## v0.6.0
 
 - [Rewrite in TypeScript and add test pack - minimum node version 6.0](https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/pull/6) - thanks @johnnyreilly!

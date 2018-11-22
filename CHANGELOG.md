@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.7.0
+
+- [`Make compatible with fork-ts-checker-webpack-plugin 0.5.0`](https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/pull/8) - thanks @johnnyreilly!
+
 ## v0.6.2
 
 - [Fix TypeScript compiler complains about unknown module `NormalizedMessage`](https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/pull/8) - thanks @n0v1!

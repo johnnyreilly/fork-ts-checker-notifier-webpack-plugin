@@ -1,6 +1,6 @@
 {
   "name": "fork-ts-checker-notifier-webpack-plugin",
-  "version": "0.6.2",
+  "version": "0.7.0",
   "description": "a notifier for users of fork-ts-checker-webpack-plugin",
   "main": "index.js",
   "types": "index.d.ts",
@@ -32,7 +32,7 @@
   "devDependencies": {
     "@types/jest": "^23.3.2",
     "@types/node-notifier": "^0.0.28",
-    "fork-ts-checker-webpack-plugin": "^0.4.9",
+    "fork-ts-checker-webpack-plugin": "^0.5.0",
     "jest": "^23.6.0",
     "ts-jest": "^23.1.4",
     "typescript": "^3.0.3"

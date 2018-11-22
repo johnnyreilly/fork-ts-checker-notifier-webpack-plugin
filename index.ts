@@ -48,9 +48,9 @@ class ForkTsCheckerNotifierWebpackPlugin {
         title: util.format(
           '%s%s',
           this.titlePrefix,
-          'Error in ' + path.basename(firstError.getFile())
+          'Error in ' + path.basename(firstError.file || '')
         ),
-        message: firstError.getContent(),
+        message: firstError.content,
         icon: path.join(__dirname, 'images/error.png')
       };
     }
@@ -62,9 +62,9 @@ class ForkTsCheckerNotifierWebpackPlugin {
         title: util.format(
           '%s%s',
           this.titlePrefix,
-          'Warning in ' + path.basename(firstWarning.getFile())
+          'Warning in ' + path.basename(firstWarning.file || '')
         ),
-        message: firstWarning.getContent(),
+        message: firstWarning.content,
         icon: path.join(__dirname, 'images/warning.png')
       };
     }

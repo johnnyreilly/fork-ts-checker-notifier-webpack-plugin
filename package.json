@@ -42,7 +42,7 @@
     "webpack": "^5.0.0-alpha.1"
   },
   "peerDependencies": {
-    "fork-ts-checker-webpack-plugin": "*"
+    "fork-ts-checker-webpack-plugin": "^1.0.0"
   },
   "jest": {
     "transform": {

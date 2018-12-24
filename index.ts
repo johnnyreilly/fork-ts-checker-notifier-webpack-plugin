@@ -1,6 +1,7 @@
 import * as path from 'path';
 import * as notifier from 'node-notifier';
 import * as util from 'util';
+import * as forkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { NormalizedMessage } from './types/NormalizedMessage';
 
 interface Options {
@@ -38,8 +39,12 @@ class ForkTsCheckerNotifierWebpackPlugin {
       }
     }
 
-    var firstError = normalizedMessages.find(diagnostic => diagnostic.isErrorSeverity());
-    var firstWarning = normalizedMessages.find(diagnostic => diagnostic.isWarningSeverity());
+    var firstError = normalizedMessages.find(diagnostic =>
+      diagnostic.isErrorSeverity()
+    );
+    var firstWarning = normalizedMessages.find(diagnostic =>
+      diagnostic.isWarningSeverity()
+    );
 
     if (firstError) {
       this.lastBuildSucceeded = false;
@@ -87,35 +92,34 @@ class ForkTsCheckerNotifierWebpackPlugin {
     }
   }
 
-  compilationDone = (diagnostics: NormalizedMessage[], lints: NormalizedMessage[]) => {
-    var notification = this.buildNotification([ ...diagnostics, ...lints]);
+  compilationDone = (
+    diagnostics: NormalizedMessage[],
+    lints: NormalizedMessage[]
+  ) => {
+    var notification = this.buildNotification([...diagnostics, ...lints]);
     if (notification) {
       notifier.notify(notification);
     }
-  }
+  };
 
   apply(compiler: any) {
     if ('hooks' in compiler) {
-      // webpack 4
+      // webpack 4+
       try {
-        compiler.hooks.forkTsCheckerReceive.tap(
-          'fork-ts-checker-notifier-webpack-plugin',
-          this.compilationDone
-        );
+        forkTsCheckerWebpackPlugin
+          .getCompilerHooks(compiler)
+          .done.tap('receive', this.compilationDone);
       } catch (error) {
         console.error(`
           Something went wrong in accessing the hooks.
           Most likely the order of plugins is wrong.\n
           Check the documentation for "fork-ts-checker-notifier-webpack-plugin"\n
-        `)
+        `);
         throw Error(`Error: ${error}`);
       }
     } else {
       // webpack 2 / 3
-      compiler.plugin(
-        'fork-ts-checker-receive',
-        this.compilationDone
-      );
+      compiler.plugin('fork-ts-checker-receive', this.compilationDone);
     }
   }
 }

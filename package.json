@@ -1,6 +1,6 @@
 {
   "name": "fork-ts-checker-notifier-webpack-plugin",
-  "version": "0.7.0",
+  "version": "1.0.0-alpha.0",
   "description": "a notifier for users of fork-ts-checker-webpack-plugin",
   "main": "index.js",
   "types": "index.d.ts",
@@ -15,7 +15,7 @@
     "notifier"
   ],
   "engines": {
-    "node": ">=6.11.5"
+    "node": ">=8.9.0"
   },
   "author": "John Reilly <johnny_reilly@hotmail.com>",
   "license": "MIT",
@@ -27,15 +27,19 @@
     "url": "https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/issues"
   },
   "dependencies": {
+    "fork-ts-checker-webpack-plugin": "^1.0.0-alpha.0",
     "node-notifier": "^5.1.2"
   },
   "devDependencies": {
     "@types/jest": "^23.3.2",
     "@types/node-notifier": "^0.0.28",
-    "fork-ts-checker-webpack-plugin": "^0.5.0",
+    "@types/tapable": "^1.0.4",
+    "@types/webpack": "^4.4.22",
     "jest": "^23.6.0",
     "ts-jest": "^23.1.4",
-    "typescript": "^3.0.3"
+    "tslint": "^5.12.0",
+    "typescript": "^3.0.3",
+    "webpack": "^5.0.0-alpha.1"
   },
   "jest": {
     "transform": {

@@ -108,7 +108,7 @@ class ForkTsCheckerNotifierWebpackPlugin {
       try {
         forkTsCheckerWebpackPlugin
           .getCompilerHooks(compiler)
-          .done.tap('receive', this.compilationDone);
+          .receive.tap('fork-ts-checker-notifier-webpack-plugin', this.compilationDone);
       } catch (error) {
         console.error(`
           Something went wrong in accessing the hooks.

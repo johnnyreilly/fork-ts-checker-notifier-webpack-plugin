@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.0
+
+- [`1.0.0`](https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/pull/15
+) - thanks @johnnyreilly!
+
 ## v1.0.0-alpha.0
 
 - [`Make compatible with fork-ts-checker-webpack-plugin 1.0.0-alpha.1`](https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/pull/11) - thanks @johnnyreilly!

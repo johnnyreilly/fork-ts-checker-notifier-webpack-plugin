@@ -13,11 +13,11 @@ a build failure. In other words: it will stay silent if everything is fine with 
 
 Use `yarn` to install packages:
 
-    yarn add --dev fork-ts-checker-notifier-webpack-plugin fork-ts-checker-notifier-webpack-plugin
+    yarn add --dev fork-ts-checker-webpack-plugin fork-ts-checker-notifier-webpack-plugin
 
 Alternatively, use `npm`:
 
-    npm install --save-dev fork-ts-checker-notifier-webpack-plugin fork-ts-checker-notifier-webpack-plugin
+    npm install --save-dev fork-ts-checker-webpack-plugin fork-ts-checker-notifier-webpack-plugin
 
 ## Usage
 

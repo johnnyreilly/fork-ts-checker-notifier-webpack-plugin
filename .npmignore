@@ -1,6 +1,5 @@
 .vscode
 index.ts
-index.d.ts
 index.test.ts
 index.test.d.ts
 types

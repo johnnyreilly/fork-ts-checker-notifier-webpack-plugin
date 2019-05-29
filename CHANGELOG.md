@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.1
+
+- [Fix TypeScript types](https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/pull/20
+) - thanks @cdeutsch
+
 ## v1.0.0
 
 - [`1.0.0`](https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/pull/15

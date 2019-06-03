@@ -1,5 +1,10 @@
 .vscode
+.github
+.gitattributes
+.gitignore
+.prettierrc
+.travis.yml
+Dockerfile
 index.ts
-index.test.ts
-index.test.d.ts
+index.test.*
 types

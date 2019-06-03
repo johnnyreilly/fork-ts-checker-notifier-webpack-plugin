@@ -4,7 +4,8 @@
 .gitignore
 .prettierrc
 .travis.yml
+.dockerignore
 Dockerfile
 index.ts
 index.test.*
-types
+types/NormalizedMessage.ts

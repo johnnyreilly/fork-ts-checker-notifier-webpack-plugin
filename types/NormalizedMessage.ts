@@ -1,4 +1,4 @@
-// copied for testing
+// copied - should be shared in future
 // https://github.com/Realytics/fork-ts-checker-webpack-plugin/blob/master/src/NormalizedMessage.ts
 
 type ErrorType = 'diagnostic' | 'lint';

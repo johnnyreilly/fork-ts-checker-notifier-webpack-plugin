@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.2
+
+- [Fix TypeScript types - include NormalizedMessage](https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/pull/23) - thanks @johnnyreilly
+
 ## v1.0.1
 
 - [Fix TypeScript types](https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/pull/20) - thanks @cdeutsch

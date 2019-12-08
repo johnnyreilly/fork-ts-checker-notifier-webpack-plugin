@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.3
+
+- Updated node-notifier version from `^5.1.2` to `^6.0.0`
+
 ## v1.0.2
 
 - [Fix TypeScript types - include NormalizedMessage](https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/pull/23) - thanks @johnnyreilly

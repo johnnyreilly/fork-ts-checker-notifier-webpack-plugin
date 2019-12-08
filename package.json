@@ -27,7 +27,7 @@
     "url": "https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/issues"
   },
   "dependencies": {
-    "node-notifier": "^5.1.2"
+    "node-notifier": "^6.0.0"
   },
   "devDependencies": {
     "@types/jest": "^23.3.2",

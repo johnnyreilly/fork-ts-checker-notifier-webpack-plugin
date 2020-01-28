@@ -1,25 +1,29 @@
 import ForkTsCheckerNotifierWebpackPlugin = require('./index');
-import { NormalizedMessage } from './types/NormalizedMessage';
+import {
+  Issue,
+  IssueSeverity,
+  IssueOrigin
+} from 'fork-ts-checker-webpack-plugin/lib/issue';
 
-const error = new NormalizedMessage({
-  type: NormalizedMessage.TYPE_DIAGNOSTIC,
+const error: Issue = {
+  origin: IssueOrigin.TYPESCRIPT,
   code: 'code',
-  severity: 'error',
-  content: 'broken things',
+  severity: IssueSeverity.ERROR,
+  message: 'broken things',
   file: 'errorFile.ts',
   line: 10,
   character: 4
-});
+};
 
-const warning = new NormalizedMessage({
-  type: NormalizedMessage.TYPE_LINT,
+const warning: Issue = {
+  origin: IssueOrigin.ESLINT,
   code: 'code',
-  severity: 'warning',
-  content: 'worrying things',
+  severity: IssueSeverity.WARNING,
+  message: 'worrying things',
   file: 'warningFile.ts',
   line: 20,
   character: 8
-});
+};
 
 describe('buildNotification', () => {
   test('first notification is skipped', () => {
@@ -39,7 +43,7 @@ describe('buildNotification', () => {
     const returnValue = plugin.buildNotification([warning, error]);
 
     expect(returnValue!.title).toBe(`Error in ${error.file}`);
-    expect(returnValue!.message).toBe(error.content);
+    expect(returnValue!.message).toBe(error.message);
     expect(returnValue!.icon.endsWith('error.png')).toBe(true);
     expect(plugin.lastBuildSucceeded).toBe(false);
   });
@@ -50,24 +54,30 @@ describe('buildNotification', () => {
     const returnValue = plugin.buildNotification([warning]);
 
     expect(returnValue!.title).toBe(`Warning in ${warning.file}`);
-    expect(returnValue!.message).toBe(warning.content);
+    expect(returnValue!.message).toBe(warning.message);
     expect(returnValue!.icon.endsWith('warning.png')).toBe(true);
     expect(plugin.lastBuildSucceeded).toBe(false);
   });
 
   test('given warning when excludeWarnings is true should return success', () => {
-    const plugin = new ForkTsCheckerNotifierWebpackPlugin({ excludeWarnings: true });
+    const plugin = new ForkTsCheckerNotifierWebpackPlugin({
+      excludeWarnings: true
+    });
 
     const returnValue = plugin.buildNotification([warning]);
 
     expect(returnValue!.title).toBe('Type check succeeded');
-    expect(returnValue!.message).toBe('No type errors! See warning(s) in console!');
+    expect(returnValue!.message).toBe(
+      'No type errors! See warning(s) in console!'
+    );
     expect(returnValue!.icon.endsWith('built.png')).toBe(true);
     expect(plugin.lastBuildSucceeded).toBe(true);
   });
 
   test('given no errors or warnings should return success', () => {
-    const plugin = new ForkTsCheckerNotifierWebpackPlugin({ excludeWarnings: true });
+    const plugin = new ForkTsCheckerNotifierWebpackPlugin({
+      excludeWarnings: true
+    });
 
     const returnValue = plugin.buildNotification([]);
 

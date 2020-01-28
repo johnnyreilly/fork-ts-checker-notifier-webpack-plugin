@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.0.0 - [Update to support `fork-ts-checker-webpack-plugin` v4](https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/pull/34) - thanks @madaz!
+
+**BREAKING CHANGES**
+
+This drops support for `fork-ts-checker-webpack-plugin` versions < 4 - if you need to use one of those versions then please use  https://www.npmjs.com/package/fork-ts-checker-notifier-webpack-plugin/v/1.0.3
+
 ## v1.0.3
 
 - Updated node-notifier version from `^5.1.2` to `^6.0.0` to [fix an issue wih SnoreToast on Windows 10 Pro](https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/issues/28) - thanks @Wojtasik!

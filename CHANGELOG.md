@@ -1,6 +1,8 @@
 # Changelog
 
-## v2.0.0 - [Update to support `fork-ts-checker-webpack-plugin` v4](https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/pull/34) - thanks @madaz!
+## v2.0.0
+
+- [Update to support `fork-ts-checker-webpack-plugin` v4](https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/pull/34) - thanks @madaz!
 
 **BREAKING CHANGES**
 

@@ -2,7 +2,7 @@ import * as path from 'path';
 import * as notifier from 'node-notifier';
 import * as util from 'util';
 import * as forkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-import { NormalizedMessage } from './types/NormalizedMessage';
+import { Issue, IssueSeverity } from 'fork-ts-checker-webpack-plugin/lib/issue';
 
 interface Options {
   /** Title prefix shown in the notifications. */
@@ -30,7 +30,7 @@ class ForkTsCheckerNotifierWebpackPlugin {
     this.titlePrefix = this.options.title ? this.options.title + ' - ' : '';
   }
 
-  buildNotification(normalizedMessages: NormalizedMessage[]) {
+  buildNotification(issues: Issue[]) {
     if (this.isFirstBuild) {
       this.isFirstBuild = false;
 
@@ -39,11 +39,11 @@ class ForkTsCheckerNotifierWebpackPlugin {
       }
     }
 
-    var firstError = normalizedMessages.find(diagnostic =>
-      diagnostic.isErrorSeverity()
+    var firstError = issues.find(
+      issue => issue.severity === IssueSeverity.ERROR
     );
-    var firstWarning = normalizedMessages.find(diagnostic =>
-      diagnostic.isWarningSeverity()
+    var firstWarning = issues.find(
+      issue => issue.severity === IssueSeverity.WARNING
     );
 
     if (firstError) {
@@ -55,7 +55,7 @@ class ForkTsCheckerNotifierWebpackPlugin {
           this.titlePrefix,
           'Error in ' + path.basename(firstError.file || '')
         ),
-        message: firstError.content,
+        message: firstError.message,
         icon: path.join(__dirname, 'images/error.png')
       };
     }
@@ -69,7 +69,7 @@ class ForkTsCheckerNotifierWebpackPlugin {
           this.titlePrefix,
           'Warning in ' + path.basename(firstWarning.file || '')
         ),
-        message: firstWarning.content,
+        message: firstWarning.message,
         icon: path.join(__dirname, 'images/warning.png')
       };
     }
@@ -92,10 +92,7 @@ class ForkTsCheckerNotifierWebpackPlugin {
     }
   }
 
-  compilationDone = (
-    diagnostics: NormalizedMessage[],
-    lints: NormalizedMessage[]
-  ) => {
+  compilationDone = (diagnostics: Issue[], lints: Issue[]) => {
     var notification = this.buildNotification([...diagnostics, ...lints]);
     if (notification) {
       notifier.notify(notification);
@@ -108,7 +105,10 @@ class ForkTsCheckerNotifierWebpackPlugin {
       try {
         forkTsCheckerWebpackPlugin
           .getCompilerHooks(compiler)
-          .receive.tap('fork-ts-checker-notifier-webpack-plugin', this.compilationDone);
+          .receive.tap(
+            'fork-ts-checker-notifier-webpack-plugin',
+            this.compilationDone
+          );
       } catch (error) {
         console.error(`
           Something went wrong in accessing the hooks.

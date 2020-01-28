@@ -100,26 +100,21 @@ class ForkTsCheckerNotifierWebpackPlugin {
   };
 
   apply(compiler: any) {
-    if ('hooks' in compiler) {
-      // webpack 4+
-      try {
-        forkTsCheckerWebpackPlugin
-          .getCompilerHooks(compiler)
-          .receive.tap(
-            'fork-ts-checker-notifier-webpack-plugin',
-            this.compilationDone
-          );
-      } catch (error) {
-        console.error(`
-          Something went wrong in accessing the hooks.
-          Most likely the order of plugins is wrong.\n
-          Check the documentation for "fork-ts-checker-notifier-webpack-plugin"\n
-        `);
-        throw Error(`Error: ${error}`);
-      }
-    } else {
-      // webpack 2 / 3
-      compiler.plugin('fork-ts-checker-receive', this.compilationDone);
+    // webpack 4+
+    try {
+      forkTsCheckerWebpackPlugin
+        .getCompilerHooks(compiler)
+        .receive.tap(
+          'fork-ts-checker-notifier-webpack-plugin',
+          this.compilationDone
+        );
+    } catch (error) {
+      console.error(`
+        Something went wrong in accessing the hooks.
+        Most likely the order of plugins is wrong.\n
+        Check the documentation for "fork-ts-checker-notifier-webpack-plugin"\n
+      `);
+      throw Error(`Error: ${error}`);
     }
   }
 }

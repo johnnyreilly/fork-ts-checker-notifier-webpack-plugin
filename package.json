@@ -15,7 +15,7 @@
     "notifier"
   ],
   "engines": {
-    "node": ">=8.9.0"
+    "node": ">=10"
   },
   "author": "John Reilly <johnny_reilly@hotmail.com>",
   "license": "MIT",

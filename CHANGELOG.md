@@ -6,7 +6,7 @@
 
 **BREAKING CHANGES**
 
-This drops support for `fork-ts-checker-webpack-plugin` versions < 5 - if you need to use one of those versions then please use  https://www.npmjs.com/package/fork-ts-checker-notifier-webpack-plugin/v/2.0.0
+This drops support for `fork-ts-checker-webpack-plugin` versions < 5 and `node` version < 10 - if you need to use one of those versions then please use  https://www.npmjs.com/package/fork-ts-checker-notifier-webpack-plugin/v/2.0.0
 
 ## v2.0.0
 

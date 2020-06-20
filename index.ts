@@ -1,6 +1,6 @@
-import * as path from 'path';
-import * as notifier from 'node-notifier';
-import * as util from 'util';
+import path from 'path';
+import notifier from 'node-notifier';
+import util from 'util';
 import forkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { Issue } from 'fork-ts-checker-webpack-plugin/lib/issue';
 

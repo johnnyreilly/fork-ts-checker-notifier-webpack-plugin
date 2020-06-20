@@ -2,7 +2,7 @@
 
 ## v3.0.0
 
-- Update to support `fork-ts-checker-webpack-plugin` v5
+- [Update to support `fork-ts-checker-webpack-plugin` v5](https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/pull/37)
 
 **BREAKING CHANGES**
 

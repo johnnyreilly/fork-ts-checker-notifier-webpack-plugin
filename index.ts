@@ -1,8 +1,8 @@
 import * as path from 'path';
 import * as notifier from 'node-notifier';
 import * as util from 'util';
-import * as forkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-import { Issue, IssueSeverity } from 'fork-ts-checker-webpack-plugin/lib/issue';
+import forkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import { Issue } from 'fork-ts-checker-webpack-plugin/lib/issue';
 
 interface Options {
   /** Title prefix shown in the notifications. */
@@ -40,10 +40,10 @@ class ForkTsCheckerNotifierWebpackPlugin {
     }
 
     var firstError = issues.find(
-      issue => issue.severity === IssueSeverity.ERROR
+      issue => issue.severity === 'error'
     );
     var firstWarning = issues.find(
-      issue => issue.severity === IssueSeverity.WARNING
+      issue => issue.severity === 'warning'
     );
 
     if (firstError) {
@@ -92,11 +92,12 @@ class ForkTsCheckerNotifierWebpackPlugin {
     }
   }
 
-  compilationDone = (diagnostics: Issue[], lints: Issue[]) => {
-    var notification = this.buildNotification([...diagnostics, ...lints]);
+  compilationDone = (issues: Issue[]): Issue[] => {
+    var notification = this.buildNotification(issues);
     if (notification) {
       notifier.notify(notification);
     }
+    return issues;
   };
 
   apply(compiler: any) {
@@ -104,7 +105,7 @@ class ForkTsCheckerNotifierWebpackPlugin {
     try {
       forkTsCheckerWebpackPlugin
         .getCompilerHooks(compiler)
-        .receive.tap(
+        .issues.tap(
           'fork-ts-checker-notifier-webpack-plugin',
           this.compilationDone
         );

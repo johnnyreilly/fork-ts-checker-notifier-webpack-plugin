@@ -1,28 +1,42 @@
 import ForkTsCheckerNotifierWebpackPlugin = require('./index');
 import {
-  Issue,
-  IssueSeverity,
-  IssueOrigin
+  Issue
 } from 'fork-ts-checker-webpack-plugin/lib/issue';
 
 const error: Issue = {
-  origin: IssueOrigin.TYPESCRIPT,
+  origin: 'typescript',
   code: 'code',
-  severity: IssueSeverity.ERROR,
+  severity: 'error',
   message: 'broken things',
   file: 'errorFile.ts',
-  line: 10,
-  character: 4
+  location: {
+    start: {
+      line: 10,
+      column: 10
+    },
+    end: {
+      line: 10,
+      column: 10
+    }
+  }
 };
 
 const warning: Issue = {
-  origin: IssueOrigin.ESLINT,
+  origin: 'eslint',
   code: 'code',
-  severity: IssueSeverity.WARNING,
+  severity: 'warning',
   message: 'worrying things',
   file: 'warningFile.ts',
-  line: 20,
-  character: 8
+  location: {
+    start: {
+      line: 10,
+      column: 10
+    },
+    end: {
+      line: 10,
+      column: 10
+    }
+  }
 };
 
 describe('buildNotification', () => {

@@ -11,7 +11,7 @@ a build failure. In other words: it will stay silent if everything is fine with 
 
 ## Installation
 
-This plugin requires minimum **fork-ts-checker-webpack-plugin@5**, **webpack 4**, see [fork-ts-checker-webpack-plugin](https://github.com/Realytics/fork-ts-checker-webpack-plugin) for minimum requirements.
+This plugin requires minimum **fork-ts-checker-webpack-plugin@6**, **webpack 4**, see [fork-ts-checker-webpack-plugin](https://github.com/Realytics/fork-ts-checker-webpack-plugin) for minimum requirements.
 
 Use `yarn` to install packages:
 

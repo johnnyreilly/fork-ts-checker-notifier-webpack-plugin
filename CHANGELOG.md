@@ -1,5 +1,13 @@
 # Changelog
 
+## v6.0.0
+
+- [Update to support `fork-ts-checker-webpack-plugin` v7](https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/pull/57)
+
+**BREAKING CHANGES**
+
+This drops support for `fork-ts-checker-webpack-plugin` versions < 7 - if you need to use v6 then please use https://www.npmjs.com/package/fork-ts-checker-notifier-webpack-plugin/v/5.0.0
+
 ## v5.0.0
 
 - Upgrade `node-notifier` to `v8.0.2` to resolve [CVE-2020-7789](https://github.com/advisories/GHSA-5fw9-fq32-wv5p)

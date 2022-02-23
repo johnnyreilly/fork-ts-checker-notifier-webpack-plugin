@@ -4,7 +4,6 @@ import {
 } from 'fork-ts-checker-webpack-plugin/lib/issue';
 
 const error: Issue = {
-  origin: 'typescript',
   code: 'code',
   severity: 'error',
   message: 'broken things',
@@ -22,7 +21,6 @@ const error: Issue = {
 };
 
 const warning: Issue = {
-  origin: 'eslint',
   code: 'code',
   severity: 'warning',
   message: 'worrying things',

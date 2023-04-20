@@ -1,7 +1,8 @@
 npm-debug.log
 /.test/
 /.vscode/
+/.history/
 /node_modules
-*.js
-*.d.ts
+index.js
+index.d.ts
 coverage

@@ -6,7 +6,7 @@
 
 **BREAKING CHANGES**
 
-This drops support for `fork-ts-checker-webpack-plugin` versions < 7 - if you need to use v6 then please use https://www.npmjs.com/package/fork-ts-checker-notifier-webpack-plugin/v/5.0.0
+This drops support for `fork-ts-checker-webpack-plugin` versions < 7 - if you need to use v6 then please use <https://www.npmjs.com/package/fork-ts-checker-notifier-webpack-plugin/v/5.0.0>
 
 ## v5.0.0
 
@@ -22,7 +22,7 @@ This drops support for `node-notifier` versions < 8.
 
 **BREAKING CHANGES**
 
-This drops support for `fork-ts-checker-webpack-plugin` versions < 6 - if you need to use one of those versions then please use  https://www.npmjs.com/package/fork-ts-checker-notifier-webpack-plugin/v/3.0.0
+This drops support for `fork-ts-checker-webpack-plugin` versions < 6 - if you need to use one of those versions then please use <https://www.npmjs.com/package/fork-ts-checker-notifier-webpack-plugin/v/3.0.0>
 
 ## v3.0.0
 
@@ -30,7 +30,7 @@ This drops support for `fork-ts-checker-webpack-plugin` versions < 6 - if you ne
 
 **BREAKING CHANGES**
 
-This drops support for `fork-ts-checker-webpack-plugin` versions < 5 and `node` version < 10 - if you need to use one of those versions then please use  https://www.npmjs.com/package/fork-ts-checker-notifier-webpack-plugin/v/2.0.0
+This drops support for `fork-ts-checker-webpack-plugin` versions < 5 and `node` version < 10 - if you need to use one of those versions then please use <https://www.npmjs.com/package/fork-ts-checker-notifier-webpack-plugin/v/2.0.0>
 
 ## v2.0.0
 
@@ -38,7 +38,7 @@ This drops support for `fork-ts-checker-webpack-plugin` versions < 5 and `node` 
 
 **BREAKING CHANGES**
 
-This drops support for `fork-ts-checker-webpack-plugin` versions < 4 - if you need to use one of those versions then please use  https://www.npmjs.com/package/fork-ts-checker-notifier-webpack-plugin/v/1.0.3
+This drops support for `fork-ts-checker-webpack-plugin` versions < 4 - if you need to use one of those versions then please use <https://www.npmjs.com/package/fork-ts-checker-notifier-webpack-plugin/v/1.0.3>
 
 ## v1.0.3
 

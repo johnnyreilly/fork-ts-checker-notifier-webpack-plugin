@@ -2,7 +2,8 @@ import path from 'path';
 import notifier from 'node-notifier';
 import util from 'util';
 import forkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-import { Issue } from 'fork-ts-checker-webpack-plugin/lib/issue';
+import type { Issue } from 'fork-ts-checker-webpack-plugin/lib/issue';
+import type { Compiler } from 'webpack';
 
 interface Options {
   /** Title prefix shown in the notifications. */
@@ -39,12 +40,8 @@ class ForkTsCheckerNotifierWebpackPlugin {
       }
     }
 
-    var firstError = issues.find(
-      issue => issue.severity === 'error'
-    );
-    var firstWarning = issues.find(
-      issue => issue.severity === 'warning'
-    );
+    const firstError = issues.find((issue) => issue.severity === 'error');
+    const firstWarning = issues.find((issue) => issue.severity === 'warning');
 
     if (firstError) {
       this.lastBuildSucceeded = false;
@@ -56,7 +53,7 @@ class ForkTsCheckerNotifierWebpackPlugin {
           'Error in ' + path.basename(firstError.file || '')
         ),
         message: firstError.message,
-        icon: path.join(__dirname, 'images/error.png')
+        icon: path.join(__dirname, 'images/error.png'),
       };
     }
 
@@ -70,7 +67,7 @@ class ForkTsCheckerNotifierWebpackPlugin {
           'Warning in ' + path.basename(firstWarning.file || '')
         ),
         message: firstWarning.message,
-        icon: path.join(__dirname, 'images/warning.png')
+        icon: path.join(__dirname, 'images/warning.png'),
       };
     }
 
@@ -87,20 +84,20 @@ class ForkTsCheckerNotifierWebpackPlugin {
           'No type errors!',
           firstWarning ? ' See warning(s) in console!' : ''
         ),
-        icon: path.join(__dirname, 'images/built.png')
+        icon: path.join(__dirname, 'images/built.png'),
       };
     }
   }
 
   compilationDone = (issues: Issue[]): Issue[] => {
-    var notification = this.buildNotification(issues);
+    const notification = this.buildNotification(issues);
     if (notification) {
       notifier.notify(notification);
     }
     return issues;
   };
 
-  apply(compiler: any) {
+  apply(compiler: Compiler) {
     // webpack 4+
     try {
       forkTsCheckerWebpackPlugin

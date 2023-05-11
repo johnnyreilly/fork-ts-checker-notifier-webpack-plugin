@@ -7,7 +7,5 @@
     "moduleResolution": "node",
     "declaration": true
   },
-  "files": [
-    "index.ts"
-  ]
+  "files": ["index.ts"]
 }

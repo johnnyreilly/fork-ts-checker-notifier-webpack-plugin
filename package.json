@@ -1,6 +1,6 @@
 {
   "name": "fork-ts-checker-notifier-webpack-plugin",
-  "version": "8.0.0",
+  "version": "9.0.0",
   "description": "a notifier for users of fork-ts-checker-webpack-plugin",
   "main": "index.js",
   "types": "index.d.ts",

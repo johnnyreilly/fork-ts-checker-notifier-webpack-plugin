@@ -25,7 +25,7 @@ class ForkTsCheckerNotifierWebpackPlugin {
   titlePrefix: string;
 
   constructor(options?: Options) {
-    this.options = options || {};
+    this.options = options ?? {};
     this.lastBuildSucceeded = false;
     this.isFirstBuild = true;
     this.titlePrefix = this.options.title ? this.options.title + ' - ' : '';
@@ -50,7 +50,7 @@ class ForkTsCheckerNotifierWebpackPlugin {
         title: util.format(
           '%s%s',
           this.titlePrefix,
-          'Error in ' + path.basename(firstError.file || '')
+          'Error in ' + path.basename(firstError.file ?? ''),
         ),
         message: firstError.message,
         icon: path.join(__dirname, 'images/error.png'),
@@ -64,7 +64,7 @@ class ForkTsCheckerNotifierWebpackPlugin {
         title: util.format(
           '%s%s',
           this.titlePrefix,
-          'Warning in ' + path.basename(firstWarning.file || '')
+          'Warning in ' + path.basename(firstWarning.file ?? ''),
         ),
         message: firstWarning.message,
         icon: path.join(__dirname, 'images/warning.png'),
@@ -82,7 +82,7 @@ class ForkTsCheckerNotifierWebpackPlugin {
         message: util.format(
           '%s%s',
           'No type errors!',
-          firstWarning ? ' See warning(s) in console!' : ''
+          firstWarning ? ' See warning(s) in console!' : '',
         ),
         icon: path.join(__dirname, 'images/built.png'),
       };
@@ -104,7 +104,7 @@ class ForkTsCheckerNotifierWebpackPlugin {
         .getCompilerHooks(compiler)
         .issues.tap(
           'fork-ts-checker-notifier-webpack-plugin',
-          this.compilationDone
+          this.compilationDone,
         );
     } catch (error) {
       console.error(`

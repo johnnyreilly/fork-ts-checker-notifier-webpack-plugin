@@ -12,14 +12,18 @@ module.exports = {
       files: ['**/*.ts'],
       plugins: ['@typescript-eslint'],
       extends: [
-        'plugin:@typescript-eslint/eslint-recommended',
-        'plugin:@typescript-eslint/recommended',
+        'plugin:@typescript-eslint/recommended-type-checked',
+        'plugin:@typescript-eslint/strict-type-checked',
+        'plugin:@typescript-eslint/stylistic-type-checked',
         'prettier',
       ],
       parser: '@typescript-eslint/parser',
       parserOptions: {
         project: './tsconfig.eslint.json',
         tsconfigRootDir: __dirname,
+      },
+      rules: {
+        '@typescript-eslint/restrict-template-expressions': 'off',
       },
     },
   ],

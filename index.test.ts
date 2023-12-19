@@ -90,7 +90,7 @@ describe('buildNotification', () => {
 
     expect(returnValue.title).toBe('Type check succeeded');
     expect(returnValue.message).toBe(
-      'No type errors! See warning(s) in console!'
+      'No type errors! See warning(s) in console!',
     );
     expect(returnValue.icon.endsWith('built.png')).toBe(true);
     expect(plugin.lastBuildSucceeded).toBe(true);

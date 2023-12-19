@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:16
 
 WORKDIR /fork-ts-checker-notifier-webpack-plugin
 

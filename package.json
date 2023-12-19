@@ -48,7 +48,7 @@
     "webpack": "^5.89.0"
   },
   "peerDependencies": {
-    "fork-ts-checker-webpack-plugin": "^8.0.0"
+    "fork-ts-checker-webpack-plugin": "^9.0.0"
   },
   "jest": {
     "transform": {

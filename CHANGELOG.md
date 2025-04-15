@@ -1,5 +1,14 @@
 # Changelog
 
+## v10.0.0
+
+- Replaced `node-notifier` with `toasted-notifier` for improved desktop notifications
+- `toasted-notifier` is a fork of `node-notifier` with additional features and fixes (works natively on Apple Silicon Macs)
+
+**BREAKING CHANGES**
+
+This migrates from `node-notifier` to `toasted-notifier` which is a fork with improved functionality. The API remains the same, but the underlying notification mechanism has changed.
+
 ## v9.0.0
 
 - [Update to support `fork-ts-checker-webpack-plugin` v9](https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin/pull/65)

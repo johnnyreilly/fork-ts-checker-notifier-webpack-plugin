@@ -6,3 +6,7 @@ npm-debug.log
 index.js
 index.d.ts
 coverage
+
+# Include the types folder
+!types/
+!types/**/*

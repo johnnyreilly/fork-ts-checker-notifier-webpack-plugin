@@ -1,5 +1,5 @@
 import path from 'path';
-import notifier from 'node-notifier';
+import toasted from 'toasted-notifier';
 import util from 'util';
 import forkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import type { Issue } from 'fork-ts-checker-webpack-plugin/lib/issue';
@@ -92,7 +92,7 @@ class ForkTsCheckerNotifierWebpackPlugin {
   compilationDone = (issues: Issue[]): Issue[] => {
     const notification = this.buildNotification(issues);
     if (notification) {
-      notifier.notify(notification);
+      toasted.notify(notification);
     }
     return issues;
   };
